@@ -1,0 +1,238 @@
+.ctn{
+  width: 100%;
+  padding: 100px 10px;
+}
+
+.wrp{
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0 0 0;
+}
+
+.title{
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 3px rgba(4, 0, 53, 0.5);
+  position: relative;
+}
+
+.subtitle{
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.card{
+  width: 100%;
+  max-width: 270px;
+  border-radius: 20px;
+  padding: 40px 15px 30px 15px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.03), 0 4px 10px 0 rgba(0, 0, 0, 0.09);
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(113, 113, 113, 0.1);
+  backdrop-filter: blur(20px);
+  transition: all ease-in-out .3s;
+}
+
+.card:hover{
+  transform: translateY(-5px) scale(1.05);
+  transition: all ease-in-out .3s;
+}
+
+.content1 h1{
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 2rem;
+  font-weight: 600;
+  padding-bottom: 30px;
+}
+
+.content1 h2{
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding-bottom: 30px;
+}
+
+.content1 h3{
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  font-weight: 200;
+  padding-bottom: 8px;
+}
+
+.content1 span{
+  width: 200px;
+  border-radius: 10px;
+  padding: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  display: inline-block;
+}
+
+.fact1 span, .fact2 span{
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.fact1 span{
+  color: rgba(243, 51, 3, 0.8);
+  font-size: 1rem;
+}
+
+.fact2 span{
+  color: rgb(4, 177, 120);
+  font-size: 1rem;
+}
+
+.fact1 span p, .fact2 span p{
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 100;
+}
+
+.buttons{
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.button1{
+  width: fit-content;
+  display: flex;
+  padding: 7px 15px;
+  background: rgba(75, 75, 75, 0.6);
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all ease .3s ;
+}
+
+.button1:hover{
+  background: rgba(217, 255, 195, 0.3);
+  color: black;
+}
+
+.button2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: .9rem;
+  transition: all .3s ease;
+}
+
+.button2:hover{
+  color: rgba(202, 255, 239, 0.8);
+  gap: 10px;
+}
+
+.button2 svg{
+  margin-bottom: -3px;
+}
+
+.content3 {
+  width: 100%;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 90%;
+  filter: contrast(110%);
+}
+
+
+.modal{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: all .3s ease;
+}
+
+.modalcontent{
+  width: 300px;
+  background: white;
+  border-radius: 15px;
+}
+
+.modalcontent form{
+  width: 100%;
+  padding: 20px;
+}
+
+.modalcontent h1{
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.8);
+  padding-bottom: 20px;
+}
+
+.btns{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.submit{
+  background: black !important;
+  color: white;
+}
+
+.cancel:hover{
+  color: rgba(0, 55, 207, 0.8);
+  cursor: pointer;
+}
+
+.error{
+  font-size: .8rem;
+  color: rgb(255, 35, 11);
+}
+
+
+
+
+@media screen and (max-width: 1100px){
+.ctn{
+  padding: 50px 10px;
+}
+
+.title{
+font-size: 9vw;
+}
+
+}
+
+
+@media screen and (max-width: 500px){
+.card{
+  max-width: 100%;
+  margin-bottom: 30px;
+}
+
+}
