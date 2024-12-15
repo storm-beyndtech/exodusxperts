@@ -13,26 +13,8 @@ import { collection, addDoc } from "firebase/firestore";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import emailjs from '@emailjs/browser';
+import { wallet as coin } from "../../utils/fund";
 
-
-
-let coin = {
-  bitcoin: {
-    id: 1,
-    title: "Bitcoin",
-    image: qr1,
-    network: "BTC",
-    address: "bc1q3d0h3s2zspaw32ex75av6w9n20vxkn36z23mzn",
-    link: "https://link.trustwallet.com/send?coin=0&address=bc1q3d0h3s2zspaw32ex75av6w9n20vxkn36z23mzn",
-  },
-  ethereum: {
-    id: 2,
-    title: "Ethereum",
-    image: qr2,
-    network: "Erc 20",
-    address: "0xA2035847428DD26Cc312c98Fb105930395e7f0cc",
-    link: "https://link.trustwallet.com/send?coin=60&address=0xA2035847428DD26Cc312c98Fb105930395e7f0cc",
-  }};
 
 
 export default function Funding() {
@@ -145,7 +127,7 @@ export default function Funding() {
       setShowBtc(true)
     }
     
-    if (e.target.value === "ethereum") {
+    if (e.target.value === "usdt") {
       setShowBtc(false)
     }
     console.log(e.target.value, coin)
@@ -174,9 +156,9 @@ export default function Funding() {
         <div className={s.CryptoFund}>
           <FormControl sx={{ minWidth: 120 }} size="small">
             <InputLabel id="coin">Coin</InputLabel>
-            <Select id="coin" value={showBtc ? "bitcoin" : "ethereum"} label="Coin" onChange={handleCoin}>
+            <Select id="coin" value={showBtc ? "bitcoin" : "usdt"} label="Coin" onChange={handleCoin}>
               <MenuItem value={"bitcoin"}>Bitcoin</MenuItem>
-              <MenuItem value={"ethereum"}>Ethereum</MenuItem>
+              <MenuItem value={"usdt"}>USDT</MenuItem>
             </Select>
           </FormControl>
           <div className={s.qr}>
@@ -188,13 +170,13 @@ export default function Funding() {
                   <input
                   type="text"
                   ref={textAreaRef}
-                  value={showBtc ? coin.bitcoin.address : coin.ethereum.address}
+                  value={showBtc ? coin[0].address : coin[1].address}
                   disabled
                   />
                 <div className={s.icon}>
                   <a href="#icon" onClick={() => handleClick("copy")}>
-                    {showBtc && <VscCopy onClick={() => copyToClipBoard(coin.bitcoin.address)} size="4em" style={copy ? {color: "#00e99b"} : {}}/>}
-                    {!showBtc && <VscCopy onClick={() => copyToClipBoard(coin.ethereum.address)} size="4em" style={copy ? {color: "#00e99b"} : {}}/>}
+                    {showBtc && <VscCopy onClick={() => copyToClipBoard(coin[0].address)} size="4em" style={copy ? {color: "#00e99b"} : {}}/>}
+                    {!showBtc && <VscCopy onClick={() => copyToClipBoard(coin[1].address)} size="4em" style={copy ? {color: "#00e99b"} : {}}/>}
                   </a>
                   {!copySuccess && <p>Copy</p>}
                   {copySuccess && <p>Copied!</p>}
@@ -203,8 +185,8 @@ export default function Funding() {
           </div>
 
           <div className={s.text}>
-            {showBtc && <p>Send only <span>{coin.bitcoin.title}({coin.bitcoin.network}) </span>to this address, sending any other coin may result to permanent loss</p>}
-            {!showBtc && <p>Send only <span>{coin.ethereum.title}({coin.ethereum.network}) </span>to this address, sending any other coin may result to permanent loss</p>}
+            {showBtc && <p>Send only <span>{coin[0].title}({coin[0].network}) </span>to this address, sending any other coin may result to permanent loss</p>}
+            {!showBtc && <p>Send only <span>{coin[1].title}({coin[1].network}) </span>to this address, sending any other coin may result to permanent loss</p>}
           </div>
 
           <button className="bigBtn full" style={{...overwrite}} onClick={() => btnClick("back")}>
